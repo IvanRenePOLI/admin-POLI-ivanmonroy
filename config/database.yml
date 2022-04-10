@@ -11,13 +11,11 @@ default: &default
 
 development:
   adapter: postgresql
-  encoding: unicode
   #database: interactive_admin_master
-  database: imr_poli
-  pool: 5
-  username: postgres
-  password: root
-  host: localhost
+  database: d5nilaap91nok2
+  username: vcsqbenmhcovka
+  password: d26386e6131ae14947d264b4e8df77e014ede2a5f82aca47401ace2be9c6546c
+  host: ec2-52-73-155-171.compute-1.amazonaws.com
   port: 5432
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
