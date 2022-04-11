@@ -4,7 +4,7 @@ ActiveAdmin.register Product, :as => "Productos" do
                       template_object: ActiveAdminImport::Model.new(
                         hint: "El archivo a importar deberá estar organizado de la siguiente forma"+
                           " y deberá estar en formato CSV delimitado por comas: 'Nombre del producto','Descripción del producto',"+
-                          "'Precio del producto'(Valor númerico),'Color del producto'(Color hexadecimal),'Cantidad disponible del producto'(Valor númerico),'Marca' y no deberá incluir la cabecera, únicamente los registros",
+                          "'Precio del producto'(Valor númerico),'Color del producto','Cantidad disponible del producto'(Valor númerico),'Marca' y no deberá incluir la cabecera, únicamente los registros",
                         csv_headers: ["name","description","price","color","available","brand"]
                       )
 
