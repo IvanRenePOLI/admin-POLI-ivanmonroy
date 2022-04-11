@@ -1,4 +1,13 @@
 ActiveAdmin.register Product, :as => "Productos" do
+  active_admin_import validate: true,
+                      csv_options: {col_sep: ";" },
+                      template_object: ActiveAdminImport::Model.new(
+                        hint: "El archivo a importar deberá estar organizado de la siguiente forma"+
+                          " y deberá estar en formato CSV delimitado por comas: 'Nombre del producto','Descripción del producto',"+
+                          "'Precio del producto'(Valor númerico),'Color del producto'(Color hexadecimal),'Cantidad disponible del producto'(Valor númerico),'Marca' y no deberá incluir la cabecera, únicamente los registros",
+                        csv_headers: ["name","description","price","color","available","brand"]
+                      )
+
   actions :all
   permit_params :name, :description, :price, :color, :available, :brand, :image
 
@@ -14,20 +23,20 @@ ActiveAdmin.register Product, :as => "Productos" do
     actions
   end
 
-  filter :name
-  filter :description
-  filter :brand
-  filter :color
+  filter :name, label: "Nombre"
+  filter :description, label: "Descripción"
+  filter :brand, label: "Marca"
+  filter :color, label: "Color"
 
   form(:html => { :multipart => true }) do |f|
     f.inputs "Agregar productos" do
-      f.input :name, label: "Nombre"
-      f.input :price, label: "Precio"
-      f.input :description, label: "Descripción", :input_html => { :rows => 3 }
-      f.input :brand, label: "Marca"
-      f.input :available, label: "Disponibilidad"
-      f.input :color, :as => :color, label: "Color"
-      f.input :image, :as => :file, label: "Imagen"
+      f.input :name, label: "Nombre", :input_html => { :autocomplete => :off}
+      f.input :price, label: "Precio", :input_html => { :autocomplete => :off}
+      f.input :description, label: "Descripción", :input_html => { :rows => 3 , :autocomplete => :off}
+      f.input :brand, label: "Marca", :input_html => { :autocomplete => :off}
+      f.input :available, label: "Disponibilidad", :input_html => { :autocomplete => :off}
+      f.input :color, label: "Color", :input_html => { :autocomplete => :off, :type => :text, :value => ''}
+      f.input :image, :as => :file, label: "Imagen", :input_html => { :autocomplete => :off}
 
     end
     f.actions

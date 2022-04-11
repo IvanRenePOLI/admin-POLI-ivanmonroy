@@ -1,11 +1,17 @@
-ActiveAdmin.register CommentProduct do
+ActiveAdmin.register CommentProduct, :as => "Valoraciones" do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :comment, :star, :product_id
+  actions :index, :show
+  permit_params :comment, :star, :product_id
+
+  filter :product_id, label: "Producto"
+  filter :comment, label: "Comentario"
+
+
   #
   # or
   #
