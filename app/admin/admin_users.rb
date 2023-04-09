@@ -11,6 +11,7 @@ ActiveAdmin.register AdminUser, :as => "Usuarios" do
     actions
   end
 
+
   filter :email, label: "Correo electronico"
 
   form do |f|
