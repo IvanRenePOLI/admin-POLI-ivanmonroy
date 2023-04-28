@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_10_044516) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_28_000251) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_10_044516) do
   end
 
   create_table "admin_users", force: :cascade do |t|
+    t.string "name", default: ""
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -40,12 +42,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_10_044516) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comment_products", force: :cascade do |t|
     t.text "comment"
     t.integer "star"
+    t.bigint "client_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_comment_products_on_client_id"
     t.index ["product_id"], name: "index_comment_products_on_product_id"
   end
 
@@ -61,5 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_10_044516) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comment_products", "clients"
   add_foreign_key "comment_products", "products"
 end
