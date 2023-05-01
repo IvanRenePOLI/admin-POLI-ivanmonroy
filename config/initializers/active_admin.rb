@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Admin Poli Ivan Monroy"
+  config.site_title = "Admin Poli Subgrupo 24"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -317,7 +317,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  config.footer = 'POLI | Politécnico Grancolombiano | Ivan Rene Monroy Santos '
+  config.footer = 'POLI | Politécnico Grancolombiano | Gerencia de proyectos informáticos | Subgrupo 24 '
 
   # == Sorting
   #
@@ -336,7 +336,7 @@ ActiveAdmin.setup do |config|
     private
     def build_footer
       div :id => 'footer' do
-        'POLI | Politécnico Grancolombiano | Ivan Rene Monroy Santos '.html_safe
+        'POLI | Politécnico Grancolombiano | Gerencia de proyectos informáticos | Subgrupo 24 '.html_safe
       end
     end
   end
