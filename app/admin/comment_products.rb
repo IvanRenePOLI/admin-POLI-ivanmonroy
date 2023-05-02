@@ -5,7 +5,7 @@ ActiveAdmin.register CommentProduct, :as => "Valoraciones" do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  actions :all
+  actions :index, :show
   permit_params :comment, :star, :client_id, :product_id
 
   filter :product_id, label: "Producto"
